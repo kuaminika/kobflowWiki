@@ -17,3 +17,6 @@ kobflow-wiki/
 │   ├── dev-containers.md
 │   └── claude-code.md      — CLAUDE.md rules, Plan Mode workflow
 └── project-tracking.md     — how Linear (Kuaminika team) maps to this wiki
+clients/
+├── web.md        — react website: stack, structure, conventions
+└── mobile.md      — ionic app: stack, structure, conventions

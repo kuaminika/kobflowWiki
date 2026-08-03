@@ -1,43 +1,37 @@
 @startuml
 left to right direction
 
+rectangle "react website" as webClient
+rectangle "ionic app" as mobileClient
+
 node "VPS" {
+  rectangle phpGateway
   node ".NET Services" as dotNetServices {
     [Expense API] as ExpenseAPI
     [Income API] as IncomeAPI
+    [Kobholder API] as KobholderAPI
     [KobSource API] as KobSourceAPI
     [IncomeSource API] as IncomeSourceAPI
     [ExpenseCategory API] as ExpenseCategoryAPI
     [IncomeCategory API] as IncomeCategoryAPI
     [Merchant API] as MerchantAPI
   }
-  rectangle phpGateway
   node "Node.js Services" as nodeServices {
     [Log Service] as logService
     [User module] as userModule
     [Import service] as importService
+    [Email Service] as emailService
+    [Payment Service] as paymentService
   }
 }
 
-database "mongo database" as mongoDB
-database "kobflow-Database" as kobflowDB
-rectangle "react website" as webClient
+webClient --> phpGateway : single entry point
+mobileClient --> phpGateway : single entry point
 
-phpGateway --> dotNetServices : grants access to
-webClient --> dotNetServices : direct (transitional)
-webClient --> phpGateway
-webClient --> nodeServices
+phpGateway --> dotNetServices : routes to
+phpGateway --> nodeServices : routes to
+phpGateway --> userModule : authenticate users
 
-dotNetServices --> kobflowDB
-logService --> kobflowDB
-userModule --> mongoDB
-importService --> mongoDB
-
-note bottom of phpGateway
-  Gateway rollout in progress —
-  react website still calls
-  .NET services directly in
-  some cases
-end note
+userModule --> emailService : triggers on registration
 
 @enduml
