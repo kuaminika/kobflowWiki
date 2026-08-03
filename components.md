@@ -9,9 +9,13 @@ how requests are routed, and how services depend on data.
 
 - **.NET Services** — the core domain APIs (Expense, Income, Kobholder, 
   KobSource, IncomeSource, ExpenseCategory, IncomeCategory, Merchant). 
-  All run as independent C# services on the VPS.
-- **Node.js Services** — Log Service, User module, Import service, 
-  Email Service, Payment Service. Independent services on the VPS.
+  All run as independent C# services on the VPS, from a single repo.
+- **Node.js Services**
+  - **Log Service** — 
+  - **User module** — 
+  - **Import service** — handles bulk inserts of expenses from CSVs
+  - **Email Service** — 
+  - **Payment Service** — 
 - **phpGateway** — currently handles authentication and grants access 
   to the .NET services.
 - **react website** — the frontend web client.
