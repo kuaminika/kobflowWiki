@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+node "VPS" {
+  node ".NET Services" as dotNetServices {
+    [Expense API] as ExpenseAPI
+    [Income API] as IncomeAPI
+    [Kobholder API] as KobholderAPI
+    [KobSource API] as KobSourceAPI
+    [IncomeSource API] as IncomeSourceAPI
+    [ExpenseCategory API] as ExpenseCategoryAPI
+    [IncomeCategory API] as IncomeCategoryAPI
+    [Merchant API] as MerchantAPI
+  }
+  node "Node.js Services" as nodeServices {
+    [Log Service] as logService
+    [User module] as userModule
+    [Import service] as importService
+    [Payment Service] as paymentService
+  }
+}
+
+database "mongo database" as mongoDB
+database "kobflow-Database" as kobflowDB
+cloud "Payment Provider" as paymentProvider
+
+dotNetServices --> kobflowDB : depends on
+logService --> kobflowDB : depends on
+userModule --> mongoDB : depends on
+importService --> mongoDB : depends on
+paymentService --> mongoDB : depends on
+
+paymentService --> paymentProvider : processes payments
+
+@enduml
