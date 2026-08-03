@@ -38,7 +38,6 @@ independent service on the VPS:
   - Expense API
   - Income API
   - Kobholder API
-  - KobSource API
   - IncomeSource API
   - ExpenseCategory API
   - IncomeCategory API

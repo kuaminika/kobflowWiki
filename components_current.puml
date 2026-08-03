@@ -1,8 +1,7 @@
 @startuml
 left to right direction
 
-rectangle "react website" as webClient
-rectangle "ionic app" as mobileClient
+rectangle "react website" as webClient 
 
 node "VPS" {
   rectangle phpGateway
@@ -10,7 +9,6 @@ node "VPS" {
     [Expense API] as ExpenseAPI
     [Income API] as IncomeAPI
     [Kobholder API] as KobholderAPI
-    [KobSource API] as KobSourceAPI
     [IncomeSource API] as IncomeSourceAPI
     [ExpenseCategory API] as ExpenseCategoryAPI
     [IncomeCategory API] as IncomeCategoryAPI
@@ -20,18 +18,15 @@ node "VPS" {
     [Log Service] as logService
     [User module] as userModule
     [Import service] as importService
-    [Email Service] as emailService
-    [Payment Service] as paymentService
+  
   }
 }
 
-webClient --> phpGateway : single entry point
-mobileClient --> phpGateway : single entry point
+webClient --> phpGateway : single entry point 
 
 phpGateway --> dotNetServices : routes to
 phpGateway --> nodeServices : routes to
 phpGateway --> userModule : authenticate users
-
-userModule --> emailService : triggers on registration
+ 
 
 @enduml

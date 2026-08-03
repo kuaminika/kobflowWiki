@@ -6,7 +6,6 @@ node "VPS" {
     [Expense API] as ExpenseAPI
     [Income API] as IncomeAPI
     [Kobholder API] as KobholderAPI
-    [KobSource API] as KobSourceAPI
     [IncomeSource API] as IncomeSourceAPI
     [ExpenseCategory API] as ExpenseCategoryAPI
     [IncomeCategory API] as IncomeCategoryAPI
